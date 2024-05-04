@@ -1,0 +1,28 @@
+body {
+  background-color: rgb(242, 242, 242);
+}
+
+#territory_opportunity {
+  position: relative;
+  max-width: 1176px;
+  width: 100%;
+  margin: 0 auto 20px auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: 0;
+  border: none;
+  padding: 20px 32px;
+  background-color: #ffffff;
+  border-radius: 8px;
+}
+
+#wt-container > #content {
+  min-height: calc(100vh - 116px);
+}
+
+@media screen and (max-width: 926px) {
+  #territory_opportunity  {
+    margin-top: 40px;
+  }
+}
