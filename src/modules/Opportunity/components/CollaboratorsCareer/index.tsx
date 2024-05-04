@@ -16,15 +16,21 @@ const CollaboratorsCareer = ({ data }: Props) => {
     setShowModal(!isShowModal);
   };
 
+  if (!data.length) {
+    return (
+      <section>
+        <div className={styles.wrapper}>Данные отсутствуют</div>
+      </section>
+    );
+  }
+
   return (
     <>
       <section>
         <div className={styles.wrapper}>
-          {data.map((card) => {
-            return (
-              <Card data={card} key={card.id} onClick={handleCloseModal} />
-            );
-          })}
+          {data.map((card) => (
+            <Card data={card} key={card.id} onClick={handleCloseModal} />
+          ))}
         </div>
       </section>
       <Modal isShow={isShowModal} onClose={handleCloseModal}>

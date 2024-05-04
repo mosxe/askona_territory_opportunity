@@ -13,3 +13,9 @@ export interface ICollaboratorPosition {
   photo: string;
   desc: string;
 }
+
+export interface IResponse {
+  data_career: ICollaboratorCarrer[];
+  data_position: ICollaboratorPosition[];
+  isError: boolean;
+}

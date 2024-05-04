@@ -1,11 +1,48 @@
-﻿import Accordion from 'components/Accordion';
+﻿import { useState, useEffect } from 'react';
+import Accordion from 'components/Accordion';
+import Loader from 'components/Loader';
+import Error from 'components/Error';
 import Title from 'components/Title';
 import CollaboratorsCareer from './components/CollaboratorsCareer';
 import CollaboratorsPositions from './components/CollaboratorsPositions';
-import { collabotorsCarreer, collabotorsNewPositions } from './mockData';
+import { fetchData, initialState } from './utils';
+import { IResponse } from 'types';
 // import styles from './styles.module.scss';
 
 const Opportunity = () => {
+  const [data, setData] = useState<IResponse>(initialState);
+  const [isLoading, setLoading] = useState<boolean>(true);
+  const [isError, setError] = useState<boolean>(false);
+
+  useEffect(() => {
+    setLoading(true);
+    fetchData()
+      .then((res) => {
+        if (res.isError) {
+          setError(true);
+          return;
+        }
+        setData(res);
+      })
+      .catch((e) => {
+        console.log(e);
+        setError(true);
+      })
+      .finally(() => setLoading(false));
+  }, []);
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  if (isError || data.isError) {
+    return (
+      <section>
+        <Error />
+      </section>
+    );
+  }
+
   return (
     <Accordion>
       <Accordion.Item
@@ -14,7 +51,7 @@ const Opportunity = () => {
         }
         isActive={true}
       >
-        <CollaboratorsCareer data={collabotorsCarreer} />
+        <CollaboratorsCareer data={data.data_career} />
       </Accordion.Item>
       <Accordion.Item
         title={
@@ -24,16 +61,9 @@ const Opportunity = () => {
           />
         }
       >
-        <CollaboratorsPositions data={collabotorsNewPositions} />
+        <CollaboratorsPositions data={data.data_position} />
       </Accordion.Item>
     </Accordion>
-    // <AccordionItem
-    //   id={1}
-    //   active={active}
-    //   title='Снижение уровня стресса'
-    //   text='Работа и жизнь могут быть полны стресса. Сделать нужно много, а времени часто не хватает. Приобретение навыков тайм-менеджмента поможет вам планировать время эффективнее, определять приоритеты. Как только вы научитесь этому – пропадет «фоновый» стресс от того, что у вас слишком много дел и вы не можете завершить все вовремя. А снижение уровня стресса – это не только дополнительная энергия, но и польза для здоровья.'
-    //   handleToggle={handleToggle}
-    // />
   );
 };
 

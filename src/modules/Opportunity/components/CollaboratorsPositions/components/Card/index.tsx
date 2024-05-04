@@ -4,12 +4,13 @@ import styles from './styles.module.scss';
 
 type Props = {
   data: ICollaboratorPosition;
+  onClick: () => void;
 };
 
-const Card = ({ data }: Props) => {
+const Card = ({ data, onClick }: Props) => {
   const { fullname, position_name, photo, desc } = data;
   return (
-    <div className={styles['card-position']}>
+    <div className={styles['card-position']} onClick={onClick}>
       <div className={styles['card-position__photo']}>
         <img
           src={photo}
