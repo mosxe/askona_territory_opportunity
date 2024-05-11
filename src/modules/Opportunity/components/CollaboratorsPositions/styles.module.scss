@@ -6,12 +6,6 @@
   margin-top: 20px;
 }
 
-.image {
-  height: 800px;
-
-  & img {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-  }
+.text {
+  font-size: 18px;
 }

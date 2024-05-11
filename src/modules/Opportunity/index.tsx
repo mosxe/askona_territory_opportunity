@@ -51,7 +51,7 @@ const Opportunity = () => {
         }
         isActive={true}
       >
-        <CollaboratorsCareer data={data.data_career} />
+        <CollaboratorsCareer data={data.dataReady} />
       </Accordion.Item>
       <Accordion.Item
         title={
@@ -61,7 +61,7 @@ const Opportunity = () => {
           />
         }
       >
-        <CollaboratorsPositions data={data.data_position} />
+        <CollaboratorsPositions data={data.dataAssigned} />
       </Accordion.Item>
     </Accordion>
   );

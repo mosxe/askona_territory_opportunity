@@ -2,14 +2,15 @@
 import { IResponse } from 'types';
 
 export const initialState = {
-  data_career: [],
-  data_position: [],
-  isError: false
+  dataReady: [],
+  dataAssigned: [],
+  isError: false,
+  errorMessage: ''
 };
 
 export const fetchData = async (): Promise<IResponse> => {
   const urlParams = new URLSearchParams({
-    custom_web_template_id: '6992363914750997960',
+    custom_web_template_id: '7020150029849735914',
     action: 'getData'
   });
   const baseURL = window.location.origin;

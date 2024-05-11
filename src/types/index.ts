@@ -1,21 +1,15 @@
-﻿export interface ICollaboratorCarrer {
+﻿export interface IData {
   id: string;
-  fullname: string;
+  person_name: string;
   position_name: string;
-  photo: string;
-  image: string;
-}
-
-export interface ICollaboratorPosition {
-  id: string;
-  fullname: string;
-  position_name: string;
-  photo: string;
   desc: string;
+  photo_link: string;
+  card_link: string;
 }
 
 export interface IResponse {
-  data_career: ICollaboratorCarrer[];
-  data_position: ICollaboratorPosition[];
+  dataReady: IData[];
+  dataAssigned: IData[];
   isError: boolean;
+  errorMessage: string;
 }

@@ -52,3 +52,13 @@
     color: #4a4844;
   }
 }
+
+.image {
+  height: 800px;
+
+  & img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+}
