@@ -7,7 +7,6 @@ import CollaboratorsCareer from './components/CollaboratorsCareer';
 import CollaboratorsPositions from './components/CollaboratorsPositions';
 import { fetchData, initialState } from './utils';
 import { IResponse } from 'types';
-// import styles from './styles.module.scss';
 
 const Opportunity = () => {
   const [data, setData] = useState<IResponse>(initialState);

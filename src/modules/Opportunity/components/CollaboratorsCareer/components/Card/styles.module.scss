@@ -47,18 +47,20 @@
   }
 
   &__desc {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 700;
     color: #4a4844;
   }
 }
 
 .image {
-  height: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   & img {
-    height: 100%;
-    width: 100%;
+    display: block;
+    max-width: 100%;
     object-fit: cover;
   }
 }
