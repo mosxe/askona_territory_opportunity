@@ -1,25 +1,16 @@
-﻿import { useState } from 'react';
-import Modal from 'components/Modal';
-import { IData } from 'types';
+﻿import { IData } from 'types';
 import image from 'assets/not_image.jpg';
 import styles from './styles.module.scss';
-import modalStyles from 'components/Modal/styles.module.scss';
 
 type Props = {
   data: IData;
 };
 
 const Card = ({ data }: Props) => {
-  const { person_name, position_name, desc, photo_link, card_link } = data;
-  const [isShowModal, setShowModal] = useState<boolean>(false);
-
-  const handleCloseModal = () => {
-    setShowModal(!isShowModal);
-  };
+  const { person_name, position_name, desc, photo_link } = data;
 
   return (
-    <>
-      <div className={styles['card-position']} onClick={handleCloseModal}>
+      <div className={styles['card-position']}>
         <div className={styles['card-position__photo']}>
           <img
             src={photo_link}
@@ -57,21 +48,6 @@ const Card = ({ data }: Props) => {
           <div className={styles['card-position__desc']}>{desc}</div>
         </div>
       </div>
-      <Modal isShow={isShowModal} onClose={handleCloseModal}>
-        <Modal.Header>
-          <button
-            type='button'
-            className={modalStyles['modal__button-close']}
-            onClick={handleCloseModal}
-          ></button>
-        </Modal.Header>
-        <Modal.Body>
-          <div className={styles.image}>
-            <img src={card_link} alt='Картинка' />
-          </div>
-        </Modal.Body>
-      </Modal>
-    </>
   );
 };
 
